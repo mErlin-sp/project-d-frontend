@@ -11,6 +11,7 @@ import {RouterLink} from "@angular/router";
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  projectName = 'Project D'
   isReady: boolean = false;
 
   onHover() {

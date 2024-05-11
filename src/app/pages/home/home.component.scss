@@ -138,6 +138,17 @@
   }
 }
 
+.title {
+  position: absolute;
+  top: 2.5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: #fff;
+  opacity: 0.4;
+
+}
+
 .author {
   position: absolute;
   bottom: 2.5vh;
