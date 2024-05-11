@@ -1,0 +1,25 @@
+<div class="menu">
+  <div class="all" (mouseenter)="onHover()" (mouseleave)="onLeave()">
+    <div class="lefter" [routerLink]="isReady ? ['/contact-dev'] : null">
+      <div class="text">Contact Developer</div>
+    </div>
+    <div class="left" [routerLink]="isReady ? ['/settings'] : null">
+      <div class="text">Settings</div>
+    </div>
+    <div class="center" [routerLink]="isReady ? ['/tracking-queries'] : null">
+      <div class="explainer"><span>Hover me</span></div>
+      <div class="text">
+        Tracking Queries
+      </div>
+    </div>
+    <div class="right" [routerLink]="isReady ? ['/price-history'] : null">
+      <div class="text">Price History</div>
+    </div>
+    <div class="righter" [routerLink]="isReady ? ['/trading-platforms'] : null">
+      <div class="text">Trading Platforms</div>
+    </div>
+  </div>
+</div>
+<div class="author">
+  Created by Oleksandr Popov. IT-z01
+</div>
