@@ -6,11 +6,13 @@ import {PriceHistoryComponent} from "./pages/price-history/price-history.compone
 import {TradingPlatformsComponent} from "./pages/trading-platforms/trading-platforms.component";
 import {HomeComponent} from "./pages/home/home.component";
 
+const projectName = 'Project D'
+
 export const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'settings', component: SettingsComponent},
-  {path: 'contact-dev', component: ContactDevComponent},
-  {path: 'tracking-queries', component: TrackingQueriesComponent},
-  {path: 'price-history', component: PriceHistoryComponent},
-  {path: 'trading-platforms', component: TradingPlatformsComponent},
+  {path: '', component: HomeComponent, title: projectName + ' | Home'},
+  {path: 'settings', component: SettingsComponent, title: projectName + ' | Settings'},
+  {path: 'contact-dev', component: ContactDevComponent, title: projectName + ' | Contact Dev'},
+  {path: 'tracking-queries', component: TrackingQueriesComponent, title: projectName + ' | Tracking Queries'},
+  {path: 'price-history', component: PriceHistoryComponent, title: projectName + ' | Price History'},
+  {path: 'trading-platforms', component: TradingPlatformsComponent, title: projectName + ' | Trading Platforms'},
 ];
