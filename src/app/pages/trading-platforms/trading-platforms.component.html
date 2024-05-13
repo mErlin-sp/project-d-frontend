@@ -2,7 +2,26 @@
   <div class="header" style="padding-top: 20px;padding-bottom: 20px;">
     <app-home-button></app-home-button>
   </div>
-  <p>trading-platforms works!</p>
+  <div class="platforms-table mx-auto w-4/5">
+    <div class="relative overflow-hidden shadow-md rounded-lg">
+      <table class="table-fixed w-full text-left">
+        <thead class="uppercase bg-[#6b7280] text-[#e5e7eb]" style="background-color: #6b7280; color: #e5e7eb;">
+        <tr>
+          <th class="py-2 border text-center font-bold p-4 w-1/12" contenteditable="false">Index</th>
+          <th class="py-2 border text-center font-bold p-4" contenteditable="false">Platform</th>
+        </tr>
+        </thead>
+        <tbody class="bg-white text-gray-500"
+               style="background-color: #FFFFFF; color: #6b7280;">
+        <tr *ngFor="let platform of platforms; index as i" class="py-5">
+          <td class="py-5 border text-center  p-4" contenteditable="false">{{ i }}</td>
+          <td class="py-5 border text-center  p-4" contenteditable="false">{{ platform }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
 
 

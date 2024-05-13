@@ -1,4 +1,4 @@
-import {Component, input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HomeButtonComponent} from "../../shared/home-button/home-button.component";
 import {DataService} from "../../data.service";
 import {catchError, interval, throwError} from "rxjs";

@@ -22,4 +22,8 @@ export class DataService {
   addQuery(query: string): Observable<any> {
     return this.http.get<any>(`${service}/db/queries/add-query/${query}`);
   }
+
+  getPlatforms(): Observable<string[]> {
+    return this.http.get<string[]>(`${service}/platforms`);
+  }
 }
