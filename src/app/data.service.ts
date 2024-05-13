@@ -11,7 +11,15 @@ export class DataService {
   constructor(private http: HttpClient) {
   }
 
-  getQueries(): Observable<String[][]> {
-    return this.http.get<String[][]>(`${service}/db/queries`);
+  getQueries(): Observable<string[][]> {
+    return this.http.get<string[][]>(`${service}/db/queries`);
+  }
+
+  setQueryActive(queryId: number, active: boolean): Observable<any> {
+    return this.http.get<any>(`${service}/db/query/${queryId}/active/${active}`);
+  }
+
+  addQuery(query: string): Observable<any> {
+    return this.http.get<any>(`${service}/db/queries/add-query/${query}`);
   }
 }

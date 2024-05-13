@@ -10,22 +10,42 @@
           <th class="py-2 border text-center font-bold p-4" contenteditable="false">Query ID</th>
           <th class="py-2 border text-center font-bold p-4" contenteditable="false">Text</th>
           <th class="py-2 border text-center font-bold p-4" contenteditable="false">Active</th>
+          <th class="py-2 border text-center font-bold p-4" contenteditable="false">Actions</th>
         </tr>
         </thead>
         <tbody class="bg-white text-gray-500 bg-[#FFFFFF] text-[#6b7280]"
                style="background-color: #FFFFFF; color: #6b7280;">
         <tr *ngFor="let query of queries" class="py-5">
-          <td class="py-5 border text-center  p-4" contenteditable="true">{{ query[0] }}</td>
-          <td class="py-5 border text-center  p-4" contenteditable="true">{{ query[1] }}</td>
-          <td class="py-5 border text-center  p-4" contenteditable="true">{{ query[2] === 1 ? 'true' : 'false' }}</td>
+          <td class="py-5 border text-center  p-4" contenteditable="false">{{ query[0] }}</td>
+          <td class="py-5 border text-center  p-4" contenteditable="false">{{ query[1] }}</td>
+          <td class="py-5 border text-center  p-4" contenteditable="false">{{ query[2] === 1 ? 'True' : 'False' }}</td>
+          <td class="py-5 border text-center  p-4" contenteditable="false">
+            <button *ngIf="query[2]===1" (click)="deactivateQuery(query[0])"
+                    class="bg-red-400 hover:bg-red-500 font-bold py-2 px-5 shadow-md rounded-lg">
+              Deactivate
+            </button>
+            <button *ngIf="query[2]===0" (click)="activateQuery(query[0])"
+                    class="bg-green-400 hover:bg-green-500 font-bold py-2 px-5 shadow-md rounded-lg">
+              Activate
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="updateStatus==='OK'">
+          <td class="py-2 border text-center font-bold p-4" contenteditable="false" colspan="4">
+            <button
+              (click)="addQuery()"
+              class="bg-green-400 hover:bg-green-500 font-bold py-2 px-5 mx-5 shadow-md rounded-lg">
+              Add query
+            </button>
+          </td>
         </tr>
         </tbody>
         <tfoot class="uppercase bg-[#6b7280] text-[#e5e7eb]" style="background-color: #6b7280; color: #e5e7eb;">
         <tr [ngStyle]="{'background-color': getUpdateStatusColor()}">
-          <td class="py-2 border text-center font-bold p-4" contenteditable="false" colspan="3">{{ updateStatus }}</td>
+          <td class="py-2 border text-center font-bold p-4" contenteditable="false" colspan="4">{{ updateStatus }}</td>
         </tr>
         <tr *ngIf="timeSinceLastUpdate!=-1">
-          <td class="py-2 border text-center font-bold p-4" contenteditable="false" colspan="3">
+          <td class="py-2 border text-center font-bold p-4" contenteditable="false" colspan="4">
             Last updated: {{ timeSinceLastUpdate }} seconds ago
           </td>
         </tr>
