@@ -26,4 +26,8 @@ export class DataService {
   getPlatforms(): Observable<string[]> {
     return this.http.get<string[]>(`${service}/platforms`);
   }
+
+  getGoods(): Observable<any> {
+    return this.http.get<any>(`${service}/db/goods`);
+  }
 }
