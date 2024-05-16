@@ -3,11 +3,14 @@
 </div>
 <div class="menu">
   <div class="all" (mouseenter)="onHover()" (mouseleave)="onLeave()">
-    <div class="lefter" [routerLink]="isReady ? ['/contact-dev'] : null">
+    <div class="menu-left-3" [routerLink]="isReady ? ['/contact-dev'] : null">
       <div class="text">Contact Developer</div>
     </div>
-    <div class="left" [routerLink]="isReady ? ['/settings'] : null">
+    <div class="menu-left-2" [routerLink]="isReady ? ['/settings'] : null">
       <div class="text">Settings</div>
+    </div>
+    <div class="menu-left-1" [routerLink]="isReady ? ['/trading-platforms'] : null">
+      <div class="text">Trading Platforms</div>
     </div>
     <div class="center" [routerLink]="isReady ? ['/tracking-queries'] : null">
       <div class="explainer"><span>Hover me</span></div>
@@ -15,11 +18,14 @@
         Tracking Queries
       </div>
     </div>
-    <div class="right" [routerLink]="isReady ? ['/price-history'] : null">
+    <div class="menu-right-1" [routerLink]="isReady ? ['/goods'] : null">
+      <div class="text">Goods</div>
+    </div>
+    <div class="menu-right-2" [routerLink]="isReady ? ['/price-history'] : null">
       <div class="text">Price History</div>
     </div>
-    <div class="righter" [routerLink]="isReady ? ['/trading-platforms'] : null">
-      <div class="text">Trading Platforms</div>
+    <div class="menu-right-3" [routerLink]="isReady ? ['/availability-history'] : null">
+      <div class="text">Availability History</div>
     </div>
   </div>
 </div>
