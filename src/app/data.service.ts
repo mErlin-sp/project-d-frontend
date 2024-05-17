@@ -30,4 +30,8 @@ export class DataService {
   getGoods(): Observable<any> {
     return this.http.get<any>(`${service}/db/goods`);
   }
+
+  getPrices(goodId: number): Observable<any> {
+    return this.http.get<any>(`${service}/db/prices/${goodId}`);
+  }
 }

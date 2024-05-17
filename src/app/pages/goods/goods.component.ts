@@ -10,6 +10,7 @@ import {
 import {MatOption, provideNativeDateAdapter} from "@angular/material/core";
 import {MatSelect} from "@angular/material/select";
 import {FormsModule} from "@angular/forms";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-goods',
@@ -24,7 +25,8 @@ import {FormsModule} from "@angular/forms";
     MatSelect,
     MatOption,
     FormsModule,
-    DatePipe
+    DatePipe,
+    RouterLink
   ],
   templateUrl: './goods.component.html',
   styleUrl: './goods.component.scss',

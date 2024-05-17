@@ -16,11 +16,17 @@ export const routes: Routes = [
   {path: 'contact-dev', component: ContactDevComponent, title: projectName + ' | Contact Dev'},
   {path: 'tracking-queries', component: TrackingQueriesComponent, title: projectName + ' | Tracking Queries'},
   {path: 'price-history', component: PriceHistoryComponent, title: projectName + ' | Price History'},
+  {path: 'price-history/:good_id', component: PriceHistoryComponent, title: projectName + ' | Price History'},
   {
     path: 'availability-history',
+    component: AvailabilityHistoryComponent,
+    title: projectName + ' | Availability History'
+  }, {
+    path: 'availability-history/:good_id',
     component: AvailabilityHistoryComponent,
     title: projectName + ' | Availability History'
   },
   {path: 'trading-platforms', component: TradingPlatformsComponent, title: projectName + ' | Trading Platforms'},
   {path: 'goods', component: GoodsComponent, title: projectName + ' | Goods'}
+
 ];

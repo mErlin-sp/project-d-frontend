@@ -1,8 +1,13 @@
-<div class="price-history" style="text-align: center">
-  <div class="header" style="padding-top: 20px;padding-bottom: 20px;">
+<div class="price-history text-center">
+  <div class="header py-5">
     <app-home-button></app-home-button>
   </div>
-  <p>price-history works!</p>
+  <div *ngIf="prices.length>0" class="price-chart">
+    <canvas baseChart [data]="chartData" [options]="chartOptions" [type]="'line'" [legend]="true"></canvas>
+  </div>
+  <div *ngIf="prices.length===0">
+    <p>No data available</p>
+  </div>
 </div>
 
 
