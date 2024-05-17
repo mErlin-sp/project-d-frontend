@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {environment} from "../environments/environment";
 
-const service = 'http://127.0.0.1:8000'
+const service = environment.apiUrl
 
 @Injectable({providedIn: 'root'})
 

@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM nginx:1.26-alpine
 
 # Copy the build output to replace the default nginx contents.
 COPY dist/frontend/browser /usr/share/nginx/html
