@@ -35,4 +35,8 @@ export class DataService {
   getPrices(goodId: number): Observable<any> {
     return this.http.get<any>(`${service}/db/prices/${goodId}`);
   }
+
+  getAvailability(goodId: number): Observable<any> {
+    return this.http.get<any>(`${service}/db/in-stock/${goodId}`);
+  }
 }

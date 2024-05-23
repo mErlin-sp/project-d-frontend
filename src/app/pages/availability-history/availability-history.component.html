@@ -2,5 +2,18 @@
   <div class="header py-5">
     <app-home-button></app-home-button>
   </div>
-  <p>availability-history component is in development</p>
+  <div *ngIf="inStock.length>0" class="in-stock-chart">
+    <canvas baseChart [data]="chartData" [options]="chartOptions" [type]="'bar'" [legend]="true"></canvas>
+  </div>
+  <div *ngIf="inStock.length===0">
+    <mat-form-field class="good-id-input overflow-hidden shadow-md rounded-lg" subscriptSizing="dynamic">
+      <mat-label>Enter Good ID</mat-label>
+      <input matInput type="text" [(ngModel)]="goodId" placeholder="43245">
+      @if (goodId) {
+        <button matSuffix mat-icon-button aria-label="Send" (click)="this.componentInit()">
+          <mat-icon>send</mat-icon>
+        </button>
+      }
+    </mat-form-field>
+  </div>
 </div>

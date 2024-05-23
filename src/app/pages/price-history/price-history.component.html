@@ -6,7 +6,15 @@
     <canvas baseChart [data]="chartData" [options]="chartOptions" [type]="'line'" [legend]="true"></canvas>
   </div>
   <div *ngIf="prices.length===0">
-    <p>No data available</p>
+    <mat-form-field class="good-id-input overflow-hidden shadow-md rounded-lg" subscriptSizing="dynamic">
+      <mat-label>Enter Good ID</mat-label>
+      <input matInput type="text" [(ngModel)]="goodId" placeholder="4234">
+      @if (goodId) {
+        <button matSuffix mat-icon-button aria-label="Send" (click)="this.componentInit()">
+          <mat-icon>send</mat-icon>
+        </button>
+      }
+    </mat-form-field>
   </div>
 </div>
 

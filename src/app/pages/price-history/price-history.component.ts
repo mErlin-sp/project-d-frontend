@@ -8,6 +8,11 @@ import {BaseChartDirective} from "ng2-charts";
 import {ChartData, ChartOptions} from "chart.js";
 import {Chart} from 'chart.js';
 import 'chartjs-adapter-date-fns';
+import {FormsModule} from "@angular/forms";
+import {MatFormField, MatLabel, MatSuffix} from "@angular/material/form-field";
+import {MatIcon} from "@angular/material/icon";
+import {MatIconButton} from "@angular/material/button";
+import {MatInput} from "@angular/material/input";
 
 @Component({
   selector: 'app-price-history',
@@ -15,7 +20,14 @@ import 'chartjs-adapter-date-fns';
   imports: [
     HomeButtonComponent,
     NgIf,
-    BaseChartDirective
+    BaseChartDirective,
+    FormsModule,
+    MatFormField,
+    MatIcon,
+    MatIconButton,
+    MatInput,
+    MatLabel,
+    MatSuffix
   ],
   templateUrl: './price-history.component.html',
   styleUrl: './price-history.component.scss',
@@ -48,6 +60,12 @@ export class PriceHistoryComponent implements OnInit {
   ngOnInit(): void {
     // Extract the path parameter
     this.goodId = this.route.snapshot.paramMap.get('good_id');
+    if (this.goodId !== null) {
+      this.componentInit();
+    }
+  }
+
+  componentInit() {
     console.log('good_id: ', this.goodId)
 
     this.loadData().then(() => {
@@ -71,6 +89,12 @@ export class PriceHistoryComponent implements OnInit {
       ).subscribe((results: any[]) => {
         const [prices] = results
         this.prices = prices;
+        if (this.prices.length === 0) {
+          this.loadingStatus = 'No data'
+          console.error('No data found for goodId: ' + this.goodId);
+          alert('No data found for goodId: ' + this.goodId)
+          reject(new Error('No data found for goodId: ' + this.goodId))
+        }
 
         this.loadingStatus = 'OK'
         console.debug('Data loaded', results);
@@ -114,6 +138,5 @@ export class PriceHistoryComponent implements OnInit {
 
     console.log('chartData: ', this.chartData)
   }
-
 
 }
