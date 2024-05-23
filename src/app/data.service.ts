@@ -39,4 +39,12 @@ export class DataService {
   getAvailability(goodId: number): Observable<any> {
     return this.http.get<any>(`${service}/db/in-stock/${goodId}`);
   }
+
+  getUpdateInterval(): Observable<any> {
+    return this.http.get<any>(`${service}/settings/update-interval`);
+  }
+
+  setUpdateInterval(interval: number): Observable<any> {
+    return this.http.get<any>(`${service}/settings/update-interval/${interval}`);
+  }
 }

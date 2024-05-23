@@ -2,7 +2,18 @@
   <div class="header" style="padding-top: 20px;padding-bottom: 20px;">
     <app-home-button></app-home-button>
   </div>
-  <p>settings works!</p>
+  <div>
+    <mat-form-field class="example-form-field overflow-hidden shadow-md rounded-lg" subscriptSizing="dynamic">
+      <mat-label>Update interval</mat-label>
+      <input matInput [(ngModel)]="newInterval"
+             [placeholder]="this.updateInterval!==null?'Current interval: '+this.updateInterval:''">
+      @if (newInterval) {
+        <button matSuffix mat-icon-button aria-label="Send" (click)="this.setUpdateInterval();this.newInterval=null">
+          <mat-icon>send</mat-icon>
+        </button>
+      }
+    </mat-form-field>
+  </div>
 </div>
 
 
