@@ -2,5 +2,13 @@
   <div class="header py-5">
     <app-home-button></app-home-button>
   </div>
-  <p>service-restart works!</p>
+  <div class="controls mt-0">
+    <p class="text-base">Service status: <span class="serviceStatus"
+                                               [ngStyle]="{'color': getServiceStatusColor()}">{{ serviceStatus }}</span>
+    </p>
+    <p class="text-base" *ngIf="timeSinceLastUpdate!=-1">Last checked: <span
+      class="lastUpdated">{{ timeSinceLastUpdate }} seconds ago</span></p>
+    <button mat-flat-button color="warn" *ngIf="serviceStatus==='RUNNING'" (click)="restartService()">RESTART Service
+    </button>
+  </div>
 </div>

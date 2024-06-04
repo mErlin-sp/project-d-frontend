@@ -47,4 +47,13 @@ export class DataService {
   setUpdateInterval(interval: number): Observable<any> {
     return this.http.get<any>(`${service}/settings/update-interval/${interval}`);
   }
+
+  testService(): Observable<any> {
+    return this.http.get<any>(`${service}/`);
+  }
+
+  restartService(): Observable<any> {
+    return this.http.get<any>(`${service}/restart-service`);
+  }
+
 }
