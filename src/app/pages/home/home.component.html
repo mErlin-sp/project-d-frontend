@@ -1,34 +1,53 @@
-<div class="title">
+<div class="title drop-shadow">
   {{ projectName }}
 </div>
 <div class="menu">
-  <div class="all" (mouseenter)="onHover()" (mouseleave)="onLeave()">
-    <div class="menu-left-3" [routerLink]="isReady ? ['/contact-dev'] : null">
-      <div class="text">Contact Developer</div>
-    </div>
-    <div class="menu-left-2" [routerLink]="isReady ? ['/settings'] : null">
-      <div class="text">Settings</div>
-    </div>
-    <div class="menu-left-1" [routerLink]="isReady ? ['/trading-platforms'] : null">
-      <div class="text">Trading Platforms</div>
-    </div>
-    <div class="center" [routerLink]="isReady ? ['/tracking-queries'] : null">
-      <div class="explainer"><span>Hover me</span></div>
-      <div class="text">
-        Tracking Queries
-      </div>
-    </div>
-    <div class="menu-right-1" [routerLink]="isReady ? ['/goods'] : null">
-      <div class="text">Goods</div>
-    </div>
-    <div class="menu-right-2" [routerLink]="isReady ? ['/price-history'] : null">
-      <div class="text">Price History</div>
-    </div>
-    <div class="menu-right-3" [routerLink]="isReady ? ['/availability-history'] : null">
-      <div class="text">Availability History</div>
-    </div>
+  <div class="menu-element" id="tracking-queries" [routerLink]="isReady ? ['/tracking-queries'] : null">
+    <div class="text">Tracking Queries</div>
+  </div>
+  <div class="menu-element" id="trading-platforms" [routerLink]="isReady ? ['/trading-platforms'] : null">
+    <div class="text">Trading Platforms</div>
+  </div>
+  <div class="menu-element" id="goods" [routerLink]="isReady ? ['/goods'] : null">
+    <div class="text">Goods</div>
+  </div>
+  <div class="menu-element" id="availability-history" [routerLink]="isReady ? ['/availability-history'] : null">
+    <div class="text">Availability History</div>
+  </div>
+  <div class="menu-element" id="price-history" [routerLink]="isReady ? ['/price-history'] : null">
+    <div class="text">Price History</div>
+  </div>
+  <div class="menu-element" id="contact-developer" [routerLink]="isReady ? ['/contact-dev'] : null">
+    <div class="text">Contact Developer</div>
+  </div>
+  <div class="menu-element" id="settings" [routerLink]="isReady ? ['/settings'] : null">
+    <div class="text">Settings</div>
+  </div>
+  <div class="menu-element" id="statistics" [routerLink]="isReady ? ['/statistic'] : null">
+    <div class="text">Statistics</div>
+  </div>
+  <div class="menu-element" id="export" [routerLink]="isReady ? ['/export'] : null">
+    <div class="text">Export</div>
+  </div>
+  <div class="menu-element" id="log" [routerLink]="isReady ? ['/log'] : null">
+    <div class="text">Log</div>
+  </div>
+  <div class="menu-element" id="api-docs" [routerLink]="isReady ? ['/api-docs'] : null">
+    <div class="text">API Docs</div>
+  </div>
+  <div class="menu-element" id="service-restart" [routerLink]="isReady ? ['/service-restart'] : null">
+    <div class="text">Service Restart</div>
+  </div>
+  <div class="menu-element" id="project-info" [routerLink]="isReady ? ['/info'] : null">
+    <div class="text">Project Info</div>
+  </div>
+  <div class="menu-element" id="db-control" [routerLink]="isReady ? ['/db-control'] : null">
+    <div class="text">Database Control</div>
   </div>
 </div>
-<div class="author">
-  Created by Oleksandr Popov. IT-z01
+<div class="author drop-shadow">
+  Designed by Oleksandr Popov. IT-z01. 2024
+</div>
+<div class="university drop-shadow">
+  National Technical University of Ukraine “Igor Sikorsky Kyiv Polytechnic Institute”
 </div>

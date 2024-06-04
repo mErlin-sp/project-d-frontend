@@ -11,18 +11,6 @@ import {RouterLink} from "@angular/router";
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  projectName = 'Project D'
-  isReady: boolean = false;
-
-  onHover() {
-    setTimeout(() => {
-      this.isReady = true;
-      console.debug('Menu is ready');
-    }, 2000);
-  }
-
-  onLeave() {
-    this.isReady = false;
-    console.debug('Menu is not ready');
-  }
+  projectName = 'Bachelor\'s Diploma Project “Web service for collecting information from electronic trading platforms”' //'Project D'
+  isReady = true
 }
