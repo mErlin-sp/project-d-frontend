@@ -5,7 +5,6 @@
   border-radius: 10px;
   border: 1px solid #fff;
   box-shadow: 0 0 20px 5px rgba(100, 100, 255, .4);
-  //opacity: 0;
   transition: all .3s ease;
   //transition-delay: 1s;
   position: relative;
@@ -16,9 +15,6 @@
   cursor: pointer;
   background-blend-mode: color-burn;
 
-  margin-left: auto;
-  margin-right: auto;
-
   &:hover {
     box-shadow: 0 0 30px 10px rgba(100, 100, 255, .6);
     background-color: #ccf;
@@ -27,7 +23,6 @@
 
 .home-button-text {
   //transform: translateY(30px);
-  //opacity: 0;
   transition: all .3s ease;
   position: absolute;
   top: 50%;
