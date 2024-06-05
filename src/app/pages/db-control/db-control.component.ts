@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HomeButtonComponent} from "../../shared/home-button/home-button.component";
-import {catchError, EMPTY, interval, throwError} from "rxjs";
+import {catchError, interval, throwError} from "rxjs";
 import {DataService} from "../../data.service";
 
 @Component({
