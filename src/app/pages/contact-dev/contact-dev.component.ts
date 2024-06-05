@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {HomeButtonComponent} from "../../shared/home-button/home-button.component";
 
 @Component({
@@ -11,5 +11,5 @@ import {HomeButtonComponent} from "../../shared/home-button/home-button.componen
   styleUrl: './contact-dev.component.scss'
 })
 export class ContactDevComponent {
-
+  developerEmail = 'merlin.ua.1@gmail.com';
 }
