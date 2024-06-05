@@ -2,5 +2,7 @@
   <div class="header py-5">
     <app-home-button></app-home-button>
   </div>
-  <p>export works!</p>
+  <a class="mt-5" mat-raised-button [href]="exportToCsv" target="_blank">Export DB to CSV</a><br>
+  <a class="mt-5" mat-raised-button [href]="exportToXLSX" target="_blank">Export DB to XLSX</a><br>
+  <a class="mt-5" mat-raised-button [href]="exportToSqLite" target="_blank">Export SQLite DB as-is</a><br>
 </div>
