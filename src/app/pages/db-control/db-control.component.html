@@ -2,5 +2,19 @@
   <div class="header py-5">
     <app-home-button></app-home-button>
   </div>
-  <p>db-control works!</p>
+  <div class="db-info mt-0">
+    <p class="text-base">DB type: <span class="db-type">{{ dbType }}</span></p>
+  </div>
+  <div class="sqlite-db-info w-3/5 mx-auto mt-10">
+    <p class="text-base text-justify indent-7">SQLite is a lightweight, self-contained, serverless, and
+      zero-configuration relational database
+      management system. It is widely used for embedded database applications, as it stores the entire database in a
+      single file on disk and supports most of the SQL standard.</p>
+  </div>
+  <div class="mysql-db-info w-3/5 mx-auto mt-10">
+    <p class="text-base text-justify indent-7">MySQL is an open-source relational database management system (RDBMS)
+      that uses structured query language (SQL) for database access. It is known for its reliability, speed, and ease of
+      use, and is widely used in web applications to manage and store data. MySQL operates in a client-server model and
+      supports multiple storage engines, providing flexibility and scalability.</p>
+  </div>
 </div>

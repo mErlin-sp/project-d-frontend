@@ -56,4 +56,8 @@ export class DataService {
     return this.http.get<any>(`${service}/restart-service`);
   }
 
+  getDBType(): Observable<any> {
+    return this.http.get<any>(`${service}/settings/db-type`);
+  }
+
 }
