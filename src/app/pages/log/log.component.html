@@ -2,5 +2,7 @@
   <div class="header py-5">
     <app-home-button></app-home-button>
   </div>
-  <p>log works!</p>
+  <div class="log-area">
+    <p *ngFor="let log of logs">{{ log }}</p>
+  </div>
 </div>
