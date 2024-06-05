@@ -2,5 +2,11 @@
   <div class="header py-5">
     <app-home-button></app-home-button>
   </div>
-  <p>statistics works!</p>
+  <p>Update status: <span [ngStyle]="{color:getUpdateStatusColor()}">{{ updateStatus }}</span></p>
+  <p *ngIf="timeSinceLastUpdate!==-1">Last updated: {{ timeSinceLastUpdate }} seconds ago</p>
+  <div *ngIf="statistics!==null" class="statistics-container mt-5">
+    <h2>Statistics</h2>
+    <p>Service run time: {{ statistics['running_time'] }} seconds</p>
+    <p>Update interval: {{ statistics['update_interval'] }} minutes</p>
+  </div>
 </div>

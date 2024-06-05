@@ -60,4 +60,8 @@ export class DataService {
     return this.http.get<any>(`${service}/settings/db-type`);
   }
 
+  getStatistics(): Observable<any> {
+    return this.http.get<any>(`${service}/statistics`);
+  }
+
 }
