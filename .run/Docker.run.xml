@@ -4,6 +4,14 @@
       <settings>
         <option name="imageTag" value="project-d-frontend" />
         <option name="containerName" value="project-d-frontend" />
+        <option name="envVars">
+          <list>
+            <DockerEnvVarImpl>
+              <option name="name" value="SERVICE_ADDR" />
+              <option name="value" value="project-d-service" />
+            </DockerEnvVarImpl>
+          </list>
+        </option>
         <option name="portBindings">
           <list>
             <DockerPortBindingImpl>

@@ -1,15 +1,24 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {environment} from "../environments/environment";
+import {environment} from '../environments/environment';
 
 const service = environment.apiUrl
+const production = environment.production
 
 @Injectable({providedIn: 'root'})
 
 export class DataService {
 
   constructor(private http: HttpClient) {
+  }
+
+  getServiceAddress(): string {
+    return service;
+  }
+
+  isProduction(): boolean {
+    return production;
   }
 
   getQueries(): Observable<string[][]> {

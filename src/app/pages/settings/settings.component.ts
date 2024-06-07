@@ -34,7 +34,7 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  constructor(private dataService: DataService) {
+  constructor(protected dataService: DataService) {
   }
 
   loadData(): void {
@@ -60,7 +60,7 @@ export class SettingsComponent implements OnInit {
         alert('Error setting update interval');
         return throwError(() => error);
       })
-    ).subscribe((result: any) => {
+    ).subscribe(() => {
       console.log('Set update interval:', this.newInterval);
       this.loadData();
     });

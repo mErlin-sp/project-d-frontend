@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 docker build -t project-d-frontend .
-docker run -p 80:80 \
+docker run -P -d \
     --name project-d-frontend \
-    --network project-d-net \
+    --network host \
     --restart always \
     project-d-frontend

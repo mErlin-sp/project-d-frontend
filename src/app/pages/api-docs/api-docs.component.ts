@@ -5,7 +5,7 @@ import {MatIcon} from "@angular/material/icon";
 import {MatAnchor, MatIconButton} from "@angular/material/button";
 import {MatInput} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
-import {environment} from "../../../environments/environment";
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-api-docs',
