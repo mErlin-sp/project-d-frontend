@@ -10,7 +10,7 @@ import {LogService} from "./log.service";
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  title = 'frontend';
+  title: string = 'frontend';
 
   private logging: boolean = true;
 
