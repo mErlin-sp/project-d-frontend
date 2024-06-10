@@ -2,7 +2,14 @@
   <div class="header py-5">
     <app-home-button></app-home-button>
   </div>
-  <div class="log-area">
-    <p *ngFor="let log of logs">{{ log }}</p>
+  <a class="mt-5" mat-raised-button [href]="serviceLog" target="_blank">Download Service LOG</a><br>
+  <div class="frontend-log mt-10">
+    <h3 *ngIf="frontendLog.length==0">Frontend log Not Available</h3>
+    <div *ngIf="frontendLog.length>0">
+      <h2>Frontend Log</h2>
+      <div *ngFor="let log of frontendLog"
+           class="log-msg mt-5 text-gray-400">{{ log.length > 100 ? log.slice(0, 100) + '...' : log }}
+      </div>
+    </div>
   </div>
 </div>
