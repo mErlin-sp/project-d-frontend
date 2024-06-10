@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HomeButtonComponent} from "../../shared/home-button/home-button.component";
 import {DataService} from "../../data.service";
-import {catchError, interval, throwError} from "rxjs";
+import {catchError, interval, Subject, takeUntil, throwError} from "rxjs";
 import {NgForOf, NgIf, NgStyle} from "@angular/common";
 
 @Component({
@@ -17,12 +17,14 @@ import {NgForOf, NgIf, NgStyle} from "@angular/common";
   styleUrl: './tracking-queries.component.scss'
 })
 
-export class TrackingQueriesComponent implements OnInit {
+export class TrackingQueriesComponent implements OnInit, OnDestroy {
   queries: any[] = [];
 
   updateStatus: string = 'Not updated'
   lastUpdated = -1
   timeSinceLastUpdate = -1
+
+  private destroy$ = new Subject<void>();
 
   getUpdateStatusColor() {
     switch (this.updateStatus) {
@@ -47,14 +49,22 @@ export class TrackingQueriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
-    interval(20000).subscribe(() => {
-      this.loadData();
-    });
-    interval(100).subscribe(() => {
-      this.getTimeSinceLastUpdate();
-    });
+    interval(20000)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.loadData();
+      });
+    interval(100)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.getTimeSinceLastUpdate();
+      });
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   loadData(): void {
     this.dataService.getQueries().pipe(
