@@ -34,7 +34,7 @@ import {MatInput} from "@angular/material/input";
   providers: []
 })
 export class PriceHistoryComponent implements OnInit {
-  goodId: string | null = null;
+  goodId: number | null = null;
   prices: [number, string][] = [];
 
   loadingStatus: string = 'Not loaded'
@@ -59,14 +59,15 @@ export class PriceHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     // Extract the path parameter
-    this.goodId = this.route.snapshot.paramMap.get('good_id');
-    if (this.goodId !== null) {
-      this.componentInit();
+    let goodIdStr = this.route.snapshot.paramMap.get('good_id')
+    this.goodId = goodIdStr ? parseInt(goodIdStr) : null
+    if (this.goodId) {
+      this.componentInit()
     }
   }
 
   componentInit() {
-    console.log('good_id: ', this.goodId)
+    console.debug('good_id: ', this.goodId)
 
     this.loadData().then(() => {
       console.log('prices: ', this.prices)
@@ -77,12 +78,11 @@ export class PriceHistoryComponent implements OnInit {
   loadData(): Promise<any> {
     return new Promise((resolve, reject) => {
       forkJoin([
-        this.goodId !== null ? this.dataService.getPrices(Number.parseInt(this.goodId)) : Promise.resolve([]),
+        this.goodId ? this.dataService.getPrices(this.goodId) : Promise.resolve([]),
       ]).pipe(
         catchError(error => {
           this.loadingStatus = 'Error loading data'
           console.error('Error loading data', error);
-
           reject(error)
           return throwError(() => error);
         })
@@ -90,7 +90,7 @@ export class PriceHistoryComponent implements OnInit {
         const [prices] = results
         this.prices = prices;
         if (this.prices.length === 0) {
-          this.loadingStatus = 'No data'
+          this.loadingStatus = 'No data found'
           console.error('No data found for goodId: ' + this.goodId);
           alert('No data found for goodId: ' + this.goodId)
           reject(new Error('No data found for goodId: ' + this.goodId))
@@ -105,23 +105,10 @@ export class PriceHistoryComponent implements OnInit {
   }
 
   processData() {
-    // this.chartData = {
-    //   // labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    //   datasets: [
-    //     {
-    //       label: 'Price History',
-    //       data: this.prices,
-    //       fill: false,
-    //       borderColor: '#4bc0c0'
-    //     }
-    //   ]
-    // }
-
     let data: { price: number; timestamp: string }[] = this.prices.map((innerArr: [number, string]) => ({
       price: innerArr[0],
       timestamp: innerArr[1]
     }));
-
 
     this.chartData = {
       datasets: [
@@ -138,5 +125,4 @@ export class PriceHistoryComponent implements OnInit {
 
     console.log('chartData: ', this.chartData)
   }
-
 }
