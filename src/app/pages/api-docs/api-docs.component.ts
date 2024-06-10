@@ -25,7 +25,8 @@ import {environment} from '../../../environments/environment';
   styleUrl: './api-docs.component.scss'
 })
 
-
 export class ApiDocsComponent {
-  api_docs_url: string = `${environment.apiUrl}/docs`
+  apiDocsUrl: string = `${environment.apiUrl}/docs`
+  openApiUrl: string = `${environment.apiUrl}/openapi.json`
+  openApiYamlUrl: string = `${environment.apiUrl}/openapi.yaml`
 }

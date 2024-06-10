@@ -2,5 +2,20 @@
   <div class="header py-5">
     <app-home-button></app-home-button>
   </div>
-  <a mat-raised-button [href]="api_docs_url" target="_blank">Swagger API Documentation</a>
+  <div>
+    <div class="mt-5">
+      <h1>API Documentation</h1>
+      <p>Explore the API documentation for this application.</p>
+      <a mat-raised-button [href]="apiDocsUrl" target="_blank">Swagger API Documentation</a><br>
+      <a mat-raised-button [href]="openApiUrl" target="_blank" class="mt-5">OpenAPI JSON</a><br>
+      <a mat-raised-button [href]="openApiYamlUrl" target="_blank" class="mt-5">OpenAPI YAML</a><br>
+    </div>
+
+    <div class="mt-10"><h1>External Documentation</h1>
+      <p>Explore the documentation for the technologies used in this application.</p>
+      <a mat-raised-button href="https://fastapi.tiangolo.com/" target="_blank">FastAPI Docs</a><br>
+      <a mat-raised-button href="https://angular.dev/" target="_blank" class="mt-5">Angular DOCS</a><br>
+      <a mat-raised-button href="https://docs.python.org/3/" target="_blank" class="mt-5">Python DOCS</a>
+    </div>
+  </div>
 </div>
