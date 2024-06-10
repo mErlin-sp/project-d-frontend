@@ -29,7 +29,7 @@ import {MatIcon} from "@angular/material/icon";
   styleUrl: './availability-history.component.scss'
 })
 export class AvailabilityHistoryComponent implements OnInit {
-  goodId: string | null = null;
+  goodId: number | null = null;
   inStock: [boolean, string][] = [];
 
   loadingStatus: string = 'Not loaded'
@@ -65,16 +65,17 @@ export class AvailabilityHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     // Extract the path parameter
-    this.goodId = this.route.snapshot.paramMap.get('good_id');
-    if (this.goodId !== null) {
+    let goodIdStr = this.route.snapshot.paramMap.get('good_id')
+    this.goodId = goodIdStr ? parseInt(goodIdStr) : null
+    if (this.goodId) {
       this.componentInit()
     }
   }
 
   componentInit() {
-    console.log('good_id: ', this.goodId)
+    console.debug('good_id: ', this.goodId)
     this.loadData().then(() => {
-      console.log('inStock: ', this.inStock)
+      console.debug('inStock: ', this.inStock)
       this.processData();
     });
   }
@@ -82,7 +83,7 @@ export class AvailabilityHistoryComponent implements OnInit {
   loadData(): Promise<any> {
     return new Promise((resolve, reject) => {
       forkJoin([
-        this.goodId !== null ? this.dataService.getAvailability(Number.parseInt(this.goodId)) : Promise.reject(new Error('No goodId')),
+        this.goodId ? this.dataService.getAvailability(this.goodId) : Promise.reject(new Error('Good ID not set')),
       ]).pipe(
         catchError(error => {
           this.loadingStatus = 'Error loading data'
@@ -92,10 +93,12 @@ export class AvailabilityHistoryComponent implements OnInit {
           return throwError(() => error);
         })
       ).subscribe((results: any[]) => {
+        console.debug('Results: ', results)
+
         const [availability] = results
         this.inStock = availability;
         if (this.inStock.length === 0) {
-          this.loadingStatus = 'No data'
+          this.loadingStatus = 'No data found'
           console.error('No data found for goodId: ', this.goodId);
           alert('No data found for goodId: ' + this.goodId)
           reject(new Error('No data found for goodId: ' + this.goodId))
@@ -109,16 +112,16 @@ export class AvailabilityHistoryComponent implements OnInit {
     });
   }
 
-  processData() {
+  processData(): void {
     if (this.inStock.length === 0) {
       console.error('No data to process')
       return;
     }
+
     let data: { in_stock: boolean; timestamp: string }[] = this.inStock.map((innerArr: [boolean, string]) => ({
       in_stock: innerArr[0],
       timestamp: innerArr[1]
     }));
-
 
     this.chartData = {
       datasets: [
