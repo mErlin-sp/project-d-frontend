@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {HomeButtonComponent} from "../../shared/home-button/home-button.component";
 import {NgOptimizedImage} from "@angular/common";
 
@@ -13,5 +13,4 @@ import {NgOptimizedImage} from "@angular/common";
   styleUrl: './info.component.scss'
 })
 export class InfoComponent {
-
 }
