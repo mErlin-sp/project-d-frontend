@@ -15,7 +15,7 @@ import {environment} from '../../../environments/environment';
 })
 
 export class ExportComponent {
-  service = environment.apiUrl
+  private service: string = environment.apiUrl
   exportToCsv: string = `${this.service}/export/csv`
   exportToXLSX: string = `${this.service}/export/xlsx`
   exportToSqLite: string = `${this.service}/export/sqlite-db`

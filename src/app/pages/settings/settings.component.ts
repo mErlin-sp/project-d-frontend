@@ -7,6 +7,7 @@ import {MatIcon} from "@angular/material/icon";
 import {catchError, interval, Subject, takeUntil, throwError} from "rxjs";
 import {DataService} from "../../data.service";
 import {MatIconButton} from "@angular/material/button";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-settings',
@@ -25,6 +26,9 @@ import {MatIconButton} from "@angular/material/button";
 export class SettingsComponent implements OnInit, OnDestroy {
   updateInterval: number | null = null;
   newInterval: number | null = null;
+
+  protected service: string = environment.apiUrl
+  protected production: boolean = environment.production
 
   private destroy$ = new Subject<void>();
 
