@@ -6,7 +6,7 @@
     <mat-form-field class="example-form-field overflow-hidden shadow-md rounded-lg" subscriptSizing="dynamic">
       <mat-label>Update interval</mat-label>
       <input matInput [(ngModel)]="newInterval"
-             [placeholder]="this.updateInterval!==null?'Current interval: '+this.updateInterval:''">
+             [placeholder]="this.updateInterval?'Current interval: '+this.updateInterval:''">
       @if (newInterval) {
         <button matSuffix mat-icon-button aria-label="Send" (click)="this.setUpdateInterval();this.newInterval=null">
           <mat-icon>send</mat-icon>
@@ -14,9 +14,9 @@
       }
     </mat-form-field>
   </div>
-  <div class="mt-5">
+  <div class="mt-10">
     <p>Service address: {{ dataService.getServiceAddress() }}</p>
-    <p>IS Production: {{ dataService.isProduction() }}</p>
+    <p>Production: {{ dataService.isProduction() }}</p>
   </div>
 </div>
 
