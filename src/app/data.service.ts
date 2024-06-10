@@ -66,7 +66,7 @@ export class DataService {
   }
 
   getDBType(): Observable<any> {
-    return this.http.get<any>(`${service}/settings/db-type`);
+    return this.http.get<any>(`${service}/db/type`);
   }
 
   getStatistics(): Observable<any> {
