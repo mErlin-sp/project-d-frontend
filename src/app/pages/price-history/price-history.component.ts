@@ -6,7 +6,6 @@ import {DataService} from "../../data.service";
 import {NgIf} from "@angular/common";
 import {BaseChartDirective} from "ng2-charts";
 import {ChartData, ChartOptions} from "chart.js";
-import {Chart} from 'chart.js';
 import 'chartjs-adapter-date-fns';
 import {FormsModule} from "@angular/forms";
 import {MatFormField, MatLabel, MatSuffix} from "@angular/material/form-field";

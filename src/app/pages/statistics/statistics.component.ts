@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HomeButtonComponent} from "../../shared/home-button/home-button.component";
 import {DataService} from "../../data.service";
-import {catchError, interval, throwError} from "rxjs";
+import {catchError, interval, Subject, takeUntil, throwError} from "rxjs";
 import {NgIf, NgStyle} from "@angular/common";
 
 @Component({
@@ -15,14 +15,16 @@ import {NgIf, NgStyle} from "@angular/common";
   templateUrl: './statistics.component.html',
   styleUrl: './statistics.component.scss'
 })
-export class StatisticsComponent implements OnInit {
-  statistics: any = null;
+export class StatisticsComponent implements OnInit, OnDestroy {
+  statistics: any | null = null;
 
   updateStatus: string = 'Not updated'
-  lastUpdated = -1
-  timeSinceLastUpdate = -1
+  lastUpdated: number = -1
+  timeSinceLastUpdate: number = -1
 
-  getUpdateStatusColor() {
+  private destroy$ = new Subject<void>();
+
+  getUpdateStatusColor(): 'green' | 'red' | 'yellow' {
     switch (this.updateStatus) {
       case 'OK':
         return 'green';
@@ -34,10 +36,9 @@ export class StatisticsComponent implements OnInit {
   }
 
   getTimeSinceLastUpdate() {
-    if (this.lastUpdated === -1) {
-      return
+    if (this.lastUpdated !== -1) {
+      this.timeSinceLastUpdate = Math.floor((Date.now() - this.lastUpdated) / 1000)
     }
-    this.timeSinceLastUpdate = Math.floor((Date.now() - this.lastUpdated) / 1000)
   }
 
   constructor(private dataService: DataService) {
@@ -45,28 +46,39 @@ export class StatisticsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
-    interval(10000).subscribe(() => {
-      this.loadData();
-    });
-    interval(100).subscribe(() => {
-      this.getTimeSinceLastUpdate();
-    });
+    interval(10000)
+      .pipe(
+        takeUntil(this.destroy$)
+      )
+      .subscribe(() => {
+        this.loadData();
+      });
+    interval(100)
+      .pipe(
+        takeUntil(this.destroy$)
+      )
+      .subscribe(() => {
+        this.getTimeSinceLastUpdate();
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   loadData(): void {
     this.dataService.getStatistics().pipe(
       catchError(error => {
         this.updateStatus = 'Error loading statistics'
-        this.lastUpdated = -1
         console.error('Error loading statistics', error);
-
         return throwError(() => new Error(error));
       })
-    ).subscribe((response: any[]) => {
+    ).subscribe((response: any) => {
       this.statistics = response;
       this.lastUpdated = Date.now()
       this.updateStatus = 'OK'
-      console.debug('Statistics updated', response);
+      console.log('Statistics updated', response);
     });
   }
 }

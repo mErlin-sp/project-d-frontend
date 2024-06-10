@@ -4,9 +4,13 @@
   </div>
   <p>Update status: <span [ngStyle]="{color:getUpdateStatusColor()}">{{ updateStatus }}</span></p>
   <p *ngIf="timeSinceLastUpdate!==-1">Last updated: {{ timeSinceLastUpdate }} seconds ago</p>
-  <div *ngIf="statistics!==null" class="statistics-container mt-5">
+  <div *ngIf="statistics" class="statistics-container mt-5">
     <h2>Statistics</h2>
     <p>Service run time: {{ statistics['running_time'] }} seconds</p>
     <p>Update interval: {{ statistics['update_interval'] }} minutes</p>
+    <p>Number of updates: {{ statistics['update_count'] }}</p>
+    <p>Platforms count: {{ statistics['platforms_count'] }}</p>
+    <p>Queries count: {{ statistics['queries_count'] }}</p>
+    <p>Goods count: {{ statistics['goods_count'] }}</p>
   </div>
 </div>
